@@ -1,7 +1,7 @@
 from time import time_ns
 from datetime import datetime, timezone
 from hashlib import blake2s
-from random import randrange, getrandbits
+from random import getrandbits
 from uuid import getnode as get_mac
 
 # base32 = "0123456789ABCDEFGHJKMNPQRSTVWXYZ"
@@ -16,8 +16,10 @@ def toBase32(n: int) -> str:
     return toBase32(n // 32) + base32[n % 32]
 
 
-def LSID1(epoch: datetime = datetime(year=1970, month=1, day=1, hour=0, minute=0, second=0, microsecond=0, tzinfo=timezone.utc),
-          worker_id: int = int(blake2s(key=get_mac().to_bytes(length=6, byteorder='big'), digest_size=2).hexdigest(), 16)) -> str:
+def LSID1(epoch: datetime = datetime(year=1970, month=1, day=1, hour=0, minute=0, second=0, microsecond=0,
+                                     tzinfo=timezone.utc),
+          worker_id: int = int(blake2s(key=get_mac().to_bytes(length=6, byteorder='big'), digest_size=2).hexdigest(),
+                               16)) -> str:
     sequence_id: int = getrandbits(10)
 
     LSID: str = ""

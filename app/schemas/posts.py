@@ -1,5 +1,4 @@
-from sqlmodel import Field, SQLModel
-from typing import Optional, List
+from ._imports import *
 
 
 class Post(SQLModel, table=True):
