@@ -1,9 +1,8 @@
-from sqlmodel import Field, SQLModel
-from typing import Optional, List
+from ._imports import *
 
 
 class User(SQLModel, table=True):
-    id: int = Field(default=None, primary_key=True)
+    id: Optional[str] = Field(default=LSID1(), primary_key=True)
     username: str
     email: str
     password: str
