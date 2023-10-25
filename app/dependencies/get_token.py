@@ -2,7 +2,7 @@ import os
 
 from fastapi import Depends, HTTPException
 from fastapi.security import HTTPBearer
-from jose import jwt
+import jwt
 
 
 def get_token(token=Depends(HTTPBearer())):
